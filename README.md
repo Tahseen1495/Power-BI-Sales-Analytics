@@ -97,7 +97,7 @@ To ensure optimal performance and accurate filter context propagation, the repor
 
 ## Core DAX Calculations
 
-Below are key DAX measures developed for this report:
+Below are some DAX measures developed for this report:
 
 ```dax
 // Total Revenue
@@ -118,7 +118,9 @@ Total Profit =
 Total Orders = DISTINCTCOUNT('Sales_Data'[OrderNumber])
 
 // Return Rate
-Return Rate = DIVIDE([Total Returns], [Total Orders], 0
+Return Rate = DIVIDE([Total Returns], [Total Orders], 0)
+
+// YTD Revenue = CALCULATE([Total Revenue],DATESYTD(Calendar_Lookup[Date]))
 ```
 
 
