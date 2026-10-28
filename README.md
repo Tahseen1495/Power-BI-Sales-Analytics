@@ -74,8 +74,17 @@ The Customer Detail page is configured as an interactive report page tooltip to 
 *Note: Headline values represent default filter context and will adjust based on report slicer selections.*
 
 ---
+## 🔍 Key Business Findings & Operational Insights
 
-## Data Architecture & Modeling
+Analyzing the Adventure Works Cycles dataset across the report pages highlighted several important business insights:
+
+* **Strong Revenue and Margins:** The business generated **$18.51M in total revenue** and **$7.86M in net profit** across 22,534 customer orders. This shows a solid overall profit margin and healthy business baseline.
+* **Controlled Return Rates:** The overall return rate is low at **2.14%**. However, checking individual products—like the *Mountain Tire Tube*—shows return spikes during specific months, which suggests potential seasonal issues or product quality concerns.
+* **Geographic Concentration:** The map view shows that sales are heavily concentrated in North America and Europe. This indicates strong core markets, but also points to untapped growth opportunities in other regions.
+* **Impact of High-Value Products:** Custom DAX measures, such as `High Ticket Orders` and 3-month rolling totals (`03-Month Cum Orders`), reveal that expensive products drive a large portion of steady monthly revenue, even when order quantities are lower.
+* **Key Customer Contributions:** Using interactive tooltips on top customers (such as *Mr. Maurice Shan*) shows that repeat buyers make up a significant portion of total revenue, proving the value of targeted customer retention efforts.
+---
+  ## Data Architecture & Modeling
 
 To ensure optimal performance and accurate filter context propagation, the report follows a clean **Star Schema** dimensional model:
 
@@ -89,6 +98,10 @@ To ensure optimal performance and accurate filter context propagation, the repor
 | `Product_Subcategories_Lookup` | Dimension | Intermediate product categorization |
 | `Product_Categories_Lookup` | Dimension | High-level product categories |
 | `Territories_Lookup` | Dimension | Geographic regions, countries, and continents |
+
+
+
+<p align="Left"><img src="screenshots/Data Normalization.jpeg"width="900"></p>
 
 ---
 ## 🧠 Key Learnings & Technical Takeaways
