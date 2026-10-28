@@ -1,83 +1,4 @@
-# Power BI Sales Analytics Dashboard
 
-**An interactive multi-page business intelligence report built with Microsoft Power BI**
-
-This project was developed during the DigiSkills Data Analytics & Business Intelligence course under the guidance and instruction of **Sir Jahangir Sachwani**. Using the Adventure Works Cycles business scenario, the dashboard transforms complex sales data into interactive views to help business stakeholders explore revenue trends, geographic performance, product margins, and customer behavior.
-
----
-
-## Executive Summary & Preview
-
-The dashboard is structured into four specialized report pages designed to balance high-level executive summaries with deep granular analysis:
-
-### 1. Executive Summary
-Designed for decision-makers to track top-line business health.
-* **Key Metrics:** Live KPI cards for Total Revenue ($18.51M), Total Profit ($7.86M), Total Orders (22,534), and Return Rate (2.14%).
-* **Visuals:** Monthly revenue and profit trends, category performance, and interactive slicers for year, month, and continent.
-
-<p align="center"><img src="screenshots/01-executive-summary.png" alt="Executive Summary Page" width="900"></p>
-
-### 2. Geographic Analysis
-Enables regional managers to explore sales distribution globally.
-* **Key Features:** Interactive map visuals, territory slicers, and location-based order volume metrics.
-
-<p align="center"><img src="screenshots/02-geographic-analysis.png" alt="Geographic Analysis Page" width="900"></p>
-
-### 3. Product Detail
-Configured for item-level deep dives with dynamic drillthrough capabilities.
-* **Key Features:** Product-level revenue, order counts, weekly revenue trendlines, return volume tracking, and native Power BI forecasting visuals.
-
-<p align="center"><img src="screenshots/03-product-detail.png" alt="Product Detail Page" width="900"></p>
-
-### 4. Customer Detail
-Configured as an interactive report page tooltip to provide immediate customer context without cluttering primary reporting canvases.
-* **Key Features:** Top-customer rankings, revenue contribution per customer, order frequency patterns, and demographic breakdowns.
-
-<p align="center"><img src="screenshots/04-customer-analysis.png" alt="Customer Detail Page" width="900"></p>
-
----
-
-## Data Architecture & Modeling
-
-To ensure optimal performance and accurate filter context propagation, the report follows a clean **Star Schema** dimensional model:
-
-| Table Name | Entity Type | Purpose |
-|---|---|---|
-| `Sales_Data` | Fact Table | Primary sales transactions, quantities, and prices |
-| `Returns_Data` | Fact Table | Product return records and quantities |
-| `Calendar_Lookup` | Dimension | Centralized date dimension enabling time-intelligence functions |
-| `Customers_Lookup` | Dimension | Customer demographics, locations, and names |
-| `Products_Lookup` | Dimension | Product names, SKU details, costs, and list prices |
-| `Product_Subcategories_Lookup` | Dimension | Intermediate product categorization |
-| `Product_Categories_Lookup` | Dimension | High-level product categories |
-| `Territories_Lookup` | Dimension | Geographic regions, countries, and continents |
-
----
-
-## Core DAX Calculations
-
-Below are key DAX measures developed for this report:
-
-```dax
-// Total Revenue
-Total Revenue = 
-SUMX(
-    'Sales_Data', 
-    'Sales_Data'[OrderQuantity] * RELATED('Products_Lookup'[ProductPrice])
-)
-
-// Total Profit
-Total Profit = 
-[Total Revenue] - SUMX(
-    'Sales_Data', 
-    'Sales_Data'[OrderQuantity] * RELATED('Products_Lookup'[ProductCost])
-)
-
-// Total Orders
-Total Orders = DISTINCTCOUNT('Sales_Data'[OrderNumber])
-
-// Return Rate
-Return Rate = DIVIDE([Total Returns], [Total Orders], 0)
 # Power BI Sales Analytics Dashboard
 
 **An interactive sales analysis project built with Microsoft Power BI**
@@ -154,6 +75,49 @@ The Executive Summary preview displays these headline values in the shown report
 | Total Profit | $7.86M |
 | Total Orders | 22,534 |
 | Return Rate | 2.14% |
+
+## Data Architecture & Modeling
+
+To ensure optimal performance and accurate filter context propagation, the report follows a clean **Star Schema** dimensional model:
+
+| Table Name | Entity Type | Purpose |
+|---|---|---|
+| `Sales_Data` | Fact Table | Primary sales transactions, quantities, and prices |
+| `Returns_Data` | Fact Table | Product return records and quantities |
+| `Calendar_Lookup` | Dimension | Centralized date dimension enabling time-intelligence functions |
+| `Customers_Lookup` | Dimension | Customer demographics, locations, and names |
+| `Products_Lookup` | Dimension | Product names, SKU details, costs, and list prices |
+| `Product_Subcategories_Lookup` | Dimension | Intermediate product categorization |
+| `Product_Categories_Lookup` | Dimension | High-level product categories |
+| `Territories_Lookup` | Dimension | Geographic regions, countries, and continents |
+
+---
+
+## Core DAX Calculations
+
+Below are key DAX measures developed for this report:
+
+```dax
+// Total Revenue
+Total Revenue = 
+SUMX(
+    'Sales_Data', 
+    'Sales_Data'[OrderQuantity] * RELATED('Products_Lookup'[ProductPrice])
+)
+
+// Total Profit
+Total Profit = 
+[Total Revenue] - SUMX(
+    'Sales_Data', 
+    'Sales_Data'[OrderQuantity] * RELATED('Products_Lookup'[ProductCost])
+)
+
+// Total Orders
+Total Orders = DISTINCTCOUNT('Sales_Data'[OrderNumber])
+
+// Return Rate
+Return Rate = DIVIDE([Total Returns], [Total Orders], 0)
+
 
 These values come from the portfolio screenshot and may change when report filters are applied. Check the measure definitions and current filter context in Power BI before using the figures for business decisions.
 
