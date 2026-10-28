@@ -117,6 +117,78 @@ Total Orders = DISTINCTCOUNT('Sales_Data'[OrderNumber])
 // Return Rate
 Return Rate = DIVIDE([Total Returns], [Total Orders], 0)
 ```
+## Key Business Questions Answered
+
+The dashboard is designed to help stakeholders explore and answer critical operational questions:
+1. **Revenue & Profit Trends:** How do top-line revenue and net profit change across monthly and yearly timelines?
+2. **Geographic Distribution:** Which countries and continents drive the highest order volumes and sales contributions?
+3. **Product Performance:** Which product categories and individual items contribute most heavily to revenue and profitability?
+4. **Return Activity:** How do product return rates vary across different inventory lines?
+5. **Customer Segmentation:** Which individual customers generate the highest order frequency and revenue totals?
+
+---
+
+## Technical Workflow
+
+The project followed an end-to-end business intelligence development lifecycle:
+1. **Data Preparation & Transformation:** Utilized Power Query to clean raw datasets, handle data types, and normalize lookup fields.
+2. **Data Modeling:** Established a robust Star Schema architecture connecting fact tables to centralized dimension lookup tables with proper relationship cardinalities.
+3. **DAX Measure Development:** Authored custom DAX formulas for dynamic aggregations, profit calculations, and return rate tracking.
+4. **Interactive Report Design:** Built multi-page layouts emphasizing executive clarity, borderless card containers, custom drillthroughs, and report-page tooltips.
+5. **Quality Assurance:** Tested cross-filtering behavior, slicer propagation, and visual formatting across all canvas views before publication.
+
+---
+
+## Tools & Skills Demonstrated
+
+* **Tool:** Microsoft Power BI Desktop
+* **Core Competencies:** 
+  * Star Schema Data Modeling
+  * Power Query ETL & Data Cleaning
+  * DAX (Data Analysis Expressions) & Time Intelligence
+  * Geographic Data Visualization (Map Integration)
+  * Executive UI/UX Design & Visual Hierarchy
+  * Interactive Slicers, Drillthroughs, and Tooltip Configurations
+
+---
+
+## Project Files
+
+| File or Folder | Purpose |
+|---|---|
+| `DigiSkills-Sales-Analytics.pbix` | Main Power BI interactive report file |
+| `screenshots/` | High-resolution dashboard preview images |
+| `README.md` | Comprehensive project documentation |
+
+---
+
+## How to View the Report
+
+1. Clone or download this repository.
+2. Open `DigiSkills-Sales-Analytics.pbix` using **Microsoft Power BI Desktop**.
+3. Explore the report pages, test the interactive slicers, and use drillthrough/tooltip features to analyze findings.
+
+*Note: Microsoft Power BI Desktop is required to open and interact with the `.pbix` source file.*
+
+---
+
+## Scope & Limitations
+
+This is a portfolio and learning project designed to demonstrate business intelligence capabilities using the Adventure Works dataset. Insights reflect the specific filter context, measures, and data model structure included in the PBIX file. Forecast visuals are predictive estimates based on historical trends rather than guaranteed future outcomes.
+
+---
+
+## About This Project
+
+Developed as part of my practical training in data analytics and business intelligence, this dashboard gave me the opportunity to transform raw operational data into structured, actionable visual reports. 
+
+I am continuously working to sharpen my Power BI expertise, analytical thinking, and executive presentation standards. Feedback, suggestions, and professional connections are always welcome!
+
+
+
+
+
+
 
 ## Business Questions
 
