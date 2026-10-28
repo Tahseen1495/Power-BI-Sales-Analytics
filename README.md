@@ -78,51 +78,6 @@ The Executive Summary preview displays these headline values in the shown report
 
 These values come from the portfolio screenshot and may change when report filters are applied. Check the measure definitions and current filter context in Power BI before using the figures for business decisions.
 
-## Data Architecture & Modeling
-
-To ensure optimal performance and accurate filter context propagation, the report follows a clean **Star Schema** dimensional model:
-
-| Table Name | Entity Type | Purpose |
-|---|---|---|
-| `Sales_Data` | Fact Table | Primary sales transactions, quantities, and prices |
-| `Returns_Data` | Fact Table | Product return records and quantities |
-| `Calendar_Lookup` | Dimension | Centralized date dimension enabling time-intelligence functions |
-| `Customers_Lookup` | Dimension | Customer demographics, locations, and names |
-| `Products_Lookup` | Dimension | Product names, SKU details, costs, and list prices |
-| `Product_Subcategories_Lookup` | Dimension | Intermediate product categorization |
-| `Product_Categories_Lookup` | Dimension | High-level product categories |
-| `Territories_Lookup` | Dimension | Geographic regions, countries, and continents |
-
----
-
-## Core DAX Calculations
-
-Below are some DAX measures developed for this report:
-
-```dax
-// Total Revenue
-Total Revenue = 
-SUMX(
-    'Sales_Data', 
-    'Sales_Data'[OrderQuantity] * RELATED('Products_Lookup'[ProductPrice])
-)
-
-// Total Profit
-Total Profit = 
-[Total Revenue] - SUMX(
-    'Sales_Data', 
-    'Sales_Data'[OrderQuantity] * RELATED('Products_Lookup'[ProductCost])
-)
-
-// Total Orders
-Total Orders = DISTINCTCOUNT('Sales_Data'[OrderNumber])
-
-// Return Rate
-Return Rate = DIVIDE([Total Returns], [Total Orders], 0)
-
-// YTD Revenue = CALCULATE([Total Revenue],DATESYTD(Calendar_Lookup[Date]))
-```
-
 
 ## Business Questions
 
