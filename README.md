@@ -91,31 +91,64 @@ To ensure optimal performance and accurate filter context propagation, the repor
 | `Territories_Lookup` | Dimension | Geographic regions, countries, and continents |
 
 ---
+## 🧠 Key Learnings & Technical Takeaways
 
-## Core DAX Calculations
+Building this executive sales analytics dashboard provided valuable hands-on experience across the entire business intelligence lifecycle:
 
-Below are the primary DAX measures written for this dashboard:
+* **Star Schema Optimization:** Mastered centralized dimensional modeling (Star Schema) to optimize Power BI performance. Separating transactional data (`Sales_Data`, `Returns_Data`) from lookup dimensions (`Calendar_Lookup`, `Products_Lookup`, `Customers_Lookup`) drastically simplified filter context propagation and accelerated report rendering.
+* **Advanced DAX & Context Transition:** Gained deep expertise in utilizing `CALCULATE`, context modification (`ALL`, `ALLEXCEPT`), and Time Intelligence (`SAMEPERIODLASTYEAR`, `DATESYTD`, `DATEADD`). Understanding row-to-filter context transition was key for building accurate cumulative and comparative measures.
+* **Executive UI/UX Design:** Implemented visual hierarchy standards using dark navy, slate blue, and gold accents alongside borderless cards and hidden gridlines to reduce cognitive load for stakeholders.
+* **Data Hygiene & ETL:** Applied rigorous Power Query transformations (data type validation, null handling, key normalization) upfront to ensure high data integrity before DAX modeling.
 
+---
+
+## 💻 Core DAX Calculations & Modeling Logic
+
+To power the dashboard's dynamic interactivity, time intelligence, and advanced filtering, the following custom DAX measures were authored:
+
+### 1. Core Financial & Volume Measures
 ```dax
-// Total Revenue
+// Calculates total gross revenue from sales transactions and product prices
 Total Revenue = 
 SUMX(
     'Sales_Data', 
     'Sales_Data'[OrderQuantity] * RELATED('Products_Lookup'[ProductPrice])
 )
 
-// Total Profit
+// Computes net profit by subtracting total product costs from total revenue
 Total Profit = 
 [Total Revenue] - SUMX(
     'Sales_Data', 
     'Sales_Data'[OrderQuantity] * RELATED('Products_Lookup'[ProductCost])
 )
 
-// Total Orders
+// Counts unique transaction orders to avoid row-level duplication
 Total Orders = DISTINCTCOUNT('Sales_Data'[OrderNumber])
 
-// Return Rate
+// Computes overall return percentage relative to total orders
 Return Rate = DIVIDE([Total Returns], [Total Orders], 0)
+``` 
+## 💻 Time Intelligence Measures
+```dax
+// Calculates Year-to-Date revenue using centralized calendar lookups
+YTD Revenue = CALCULATE([Total Revenue], DATESYTD(Calendar_Lookup[Date]))
+
+// Evaluates previous month revenue for comparative growth analysis
+Prev.Month Revenue = CALCULATE([Total Revenue], DATEADD(Calendar_Lookup[Date], -1, MONTH))
+
+// Tracks product returns from the prior month
+Prev Month Return = CALCULATE([Total Returns], DATEADD(Calendar_Lookup[Date], -1, MONTH))
+```
+## 💻 Advanced Filtering & Custom Aggregations
+```dax
+// Determines the overall average retail price across all products
+Overall Avg. Price = CALCULATE([Avg Retail Price], ALL(Products_Lookup))
+
+// Filters orders exceeding the baseline average retail price
+High Ticket Orders = CALCULATE([Total Orders], FILTER(Products_Lookup, Products_Lookup[ProductPrice] > [Overall Avg. Price]))
+
+// Computes a rolling 3-month cumulative order volume
+03-Month Cum Orders = CALCULATE([Total Orders], DATESINPERIOD(Calendar_Lookup[Date], MAX(Calendar_Lookup[Date]), -3, MONTH))
 ```
 ## Key Business Questions Answered
 
@@ -125,6 +158,7 @@ The dashboard is designed to help stakeholders explore and answer critical opera
 3. **Product Performance:** Which product categories and individual items contribute most heavily to revenue and profitability?
 4. **Return Activity:** How do product return rates vary across different inventory lines?
 5. **Customer Segmentation:** Which individual customers generate the highest order frequency and revenue totals?
+
 
 ---
 
