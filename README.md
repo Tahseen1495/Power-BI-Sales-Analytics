@@ -1,13 +1,3 @@
-
-<p align="center"><img src="screenshots/01-executive-summary.png" alt="Geographic Analysis dashboard" width="900"></p>
-
-<p align="center"><img src="screenshots/02-geographic-analysis.png" alt="Geographic Analysis dashboard" width="900"></p>
-
-<p align="center"><img src="screenshots/03-product-detail.png" alt="Product Detail dashboard" width="900"></p>
-
-
-<p align="center"><img src="screenshots/04-customer-analysis.png" alt="Customer Analysis dashboard" width="900"></p>
-
 # Power BI Sales Analytics Dashboard
 
 **An interactive sales analysis project built with Microsoft Power BI**
@@ -31,7 +21,7 @@ The aim is to present business data in a clear format and make it easier to expl
 
 The Executive Summary brings key sales indicators and trends into one view. It includes KPI cards, monthly performance, product information, and interactive slicers.
 
-![Executive Summary dashboard](screenshots/executive-summary.png)
+<p align="center"><img src="screenshots/01-executive-summary.png" alt="Geographic Analysis dashboard" width="900"></p>
 
 **What this page helps explore**
 - Total revenue, total profit, and order volume
@@ -44,7 +34,7 @@ The Executive Summary brings key sales indicators and trends into one view. It i
 
 The map page helps users explore order distribution across geographic areas. The report includes a continent slicer and a map using country and sales-related measures.
 
-![Geographic analysis dashboard](screenshots/geographic-analysis.png)
+<p align="center"><img src="screenshots/02-geographic-analysis.png" alt="Geographic Analysis dashboard" width="900"></p>
 
 **What this page helps explore**
 - Geographic distribution of orders
@@ -55,7 +45,7 @@ The map page helps users explore order distribution across geographic areas. The
 
 The Product Detail page is configured for drillthrough by product name. The current report configuration includes the Mountain Tire Tube example. It combines product-level KPIs with weekly revenue and order trends.
 
-![Product detail dashboard](screenshots/product-detail.png)
+<p align="center"><img src="screenshots/03-product-detail.png" alt="Product Detail dashboard" width="900"></p>
 
 **What this page helps explore**
 - Product revenue and order performance
@@ -69,7 +59,7 @@ Forecasts are estimates and should not be treated as guaranteed future results.
 
 The Customer Detail page is configured as a tooltip page. Its visuals include a customer table, customer-level revenue and order measures, customer breakdowns, and monthly trends. The page is designed to provide additional customer context when supported by the report's interactions.
 
-![Customer detail dashboard](screenshots/customer-detail.png)
+<p align="center"><img src="screenshots/04-customer-analysis.png" alt="Customer Analysis dashboard" width="900"></p>
 
 **What this page helps explore**
 - Customer-level revenue and orders
