@@ -119,7 +119,7 @@ Total Orders = DISTINCTCOUNT('Sales_Data'[OrderNumber])
 
 // Return Rate
 Return Rate = DIVIDE([Total Returns], [Total Orders], 0)
---
+---
 
 
 ## Business Questions
