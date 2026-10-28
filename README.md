@@ -8,7 +8,7 @@ My final project for the DigiSkills Data Analytics course is a multi-page Power 
 
 This page gives an overview of revenue, profit, orders, return rate, monthly trends, and product performance.
 
-<p align="center"><img src="screenshots/01-executive-summary.png" alt="Executive Summary dashboard" width="900"></p>
+"D:\Power BI Sales Analytics\screenshots\01-executive-summary.png"
 
 ### 2. Geographic Analysis
 
