@@ -2,20 +2,18 @@
 
 **An interactive sales analysis project built with Microsoft Power BI**
 
-This project is part of my Data Analytics learning journey through DigiSkills. I created a multi-page Power BI report using the Adventure Works Cycles business scenario to explore sales performance, product results, geographic distribution, and customer patterns.
+This project is part of my Data Analytics learning journey through DigiSkills. I built a multi-page Power BI report around the Adventure Works Cycles business scenario to explore sales performance, geographic distribution, product results, and customer patterns.
 
-The aim is to present business data in a clear format and make it easier to explore key performance indicators, trends, and differences across products, regions, and customers.
+The aim is to present business data in a clear format and help users explore key performance indicators, trends, and differences across products, regions, and customers.
 
 ## Project at a Glance
 
 - **Tool:** Microsoft Power BI Desktop
 - **Business scenario:** Adventure Works Cycles
 - **Report pages:** Executive Summary, Map, Product Detail, and Customer Detail
-- **Main focus:** Sales, profit, orders, returns, product performance, geography, and customer analysis
+- **Main areas:** Revenue, profit, orders, returns, product performance, geography, and customer analysis
 
 ## Dashboard Preview
-
-> If your image filenames are different, update the paths below to match the exact filenames in your `screenshots/` folder.
 
 ### 1. Executive Summary
 
@@ -23,45 +21,44 @@ The Executive Summary brings key sales indicators and trends into one view. It i
 
 <p align="center"><img src="screenshots/01-executive-summary.png" alt="Geographic Analysis dashboard" width="900"></p>
 
-**What this page helps explore**
-- Total revenue, total profit, and order volume
-- Return rate
+**What this page covers**
+- Revenue, profit, order volume, and return rate
 - Monthly sales and profit trends
 - Product and category performance
 - Filtering by continent, month, and year
 
 ### 2. Geographic Analysis
 
-The map page helps users explore order distribution across geographic areas. The report includes a continent slicer and a map using country and sales-related measures.
+The Map page helps users explore order distribution across geographic areas. It includes a continent slicer and location-based visuals.
 
 <p align="center"><img src="screenshots/02-geographic-analysis.png" alt="Geographic Analysis dashboard" width="900"></p>
 
-**What this page helps explore**
+**What this page covers**
 - Geographic distribution of orders
 - Differences between countries and continents
-- Revenue, profit, cost, and order measures by location
+- Sales-related measures by location
 
 ### 3. Product Detail
 
-The Product Detail page is configured for drillthrough by product name. The current report configuration includes the Mountain Tire Tube example. It combines product-level KPIs with weekly revenue and order trends.
+The Product Detail page is configured for drillthrough by product name. The Mountain Tire Tube example is shown in the report preview. The page combines product-level KPIs with weekly revenue and order trends.
 
 <p align="center"><img src="screenshots/03-product-detail.png" alt="Product Detail dashboard" width="900"></p>
 
-**What this page helps explore**
+**What this page covers**
 - Product revenue and order performance
 - Return activity
 - Weekly revenue trends
 - Revenue forecasting visuals
 
-Forecasts are estimates and should not be treated as guaranteed future results.
+Forecasts are estimates, not guaranteed future results.
 
 ### 4. Customer Detail
 
-The Customer Detail page is configured as a tooltip page. Its visuals include a customer table, customer-level revenue and order measures, customer breakdowns, and monthly trends. The page is designed to provide additional customer context when supported by the report's interactions.
+The Customer Detail page is configured as a tooltip page. Its visuals include customer-level measures, customer breakdowns, and monthly trends, providing additional customer context through report interactions.
 
 <p align="center"><img src="screenshots/04-customer-analysis.png" alt="Customer Analysis dashboard" width="900"></p>
 
-**What this page helps explore**
+**What this page covers**
 - Customer-level revenue and orders
 - Customer comparisons
 - Customer breakdowns by available attributes
@@ -78,7 +75,7 @@ The Executive Summary preview displays these headline values in the shown report
 | Total Orders | 22,534 |
 | Return Rate | 2.14% |
 
-These are the values visible in the portfolio screenshot, not a guarantee that the same values will appear under every filter selection. Before using them for business decisions, check the measure definitions and the current report filters in Power BI.
+These values come from the portfolio screenshot and may change when report filters are applied. Check the measure definitions and current filter context in Power BI before using the figures for business decisions.
 
 ## Business Questions
 
@@ -91,56 +88,74 @@ The report is designed to help explore questions such as:
 5. Which customers generate the most revenue or orders?
 6. What patterns appear in monthly sales and customer activity?
 
-## Key Business Insights
+## Business Insights to Explore
 
-I will document specific findings here after checking the report values and filter context. The aim is to report evidence-based observations rather than make assumptions from the chart design alone.
+The dashboard supports investigation of sales performance across products, geographic regions, and customer groups. The following are the main areas to explore:
 
-Potential areas to investigate include:
-- The products or categories with the highest revenue or profit.
-- Geographic areas with the highest order volume.
-- Changes in revenue and profit over the reporting period.
-- Customers with the highest order or revenue values.
-- Products or periods with notable return activity.
+- Products and categories with the highest revenue and profit.
+- Geographic regions with the highest order volume.
+- Changes in revenue and profit over time.
+- Customers with the highest revenue or order counts.
+- Differences in product return activity.
 
-*These are analysis questions, not confirmed findings. Add a finding only after validating the relevant values in the report.*
+These are analysis areas, not confirmed findings. Any final conclusion should include actual values and relevant comparisons from the report.
+
+## Data Model Overview
+
+The report references tables with names that indicate the following roles:
+
+| Table | Likely purpose |
+|---|---|
+| `Sales Data` | Sales-related fields and measures |
+| `Returns Data` | Return-related information |
+| `Calendar_Lookup` | Date, month, week, and year fields |
+| `Customers_lookup` | Customer attributes |
+| `Products_Lookup` | Product names and attributes |
+| `Product_Subcategories_Lookup` | Product subcategory labels |
+| `Product_Categories_Lookup` | Product category labels |
+| `Territories_Lookup` | Geographic and territory attributes |
+
+This overview is based on table names referenced by report visuals. Confirm each table's role and the relationships in Model view before documenting relationship directions, cardinality, or a specific modeling design.
+
+## Measures Referenced in the Report
+
+The report visuals reference measures for:
+
+- Total revenue
+- Total profit
+- Total orders
+- Return rate
+- Total cost
+- Returns
+- Revenue, order, and return comparisons across time
+- Revenue and order targets
+
+The exact DAX formulas and business definitions should be reviewed in Power BI before being documented in detail.
 
 ## Interactive Features
 
 The report configuration includes:
+
 - Continent, month, and year slicers on the Executive Summary.
-- A continent slicer on the map page.
+- A continent slicer on the Map page.
 - Product-name drillthrough on the Product Detail page.
 - A Customer Detail tooltip page for additional customer context.
 
-The effect of each filter can depend on the visual interactions configured in Power BI. Test the report before describing any additional cross-filtering behavior.
-
-## Measures Referenced in the Report
-
-The report visuals reference measures including:
-- Total Revenue
-- Total Profit
-- Total Orders
-- Return Rate
-- Total Cost
-- Total Returns (the report's internal measure label appears as `Total Retuens`)
-- Revenue, order, and return comparisons across time
-
-This list identifies measures referenced by report visuals. Their DAX formulas and business definitions should be reviewed in Power BI before they are documented in detail.
+Filter effects depend on the visual interactions configured in Power BI. Test the report before describing additional cross-filtering behavior.
 
 ## Tools and Skills
 
-**Tool used:** Microsoft Power BI Desktop
+**Tool:** Microsoft Power BI Desktop
 
 This project demonstrates report-building and business-visualization work in areas such as:
+
 - KPI presentation
 - Time-based trend analysis
 - Geographic analysis
 - Product performance analysis
 - Customer analysis
-- Interactive slicers and drillthrough
+- Interactive slicers, drillthrough, and tooltip configuration
 - Report layout and visual consistency
-
-The exact data-preparation steps, data-model relationships, and DAX logic should be documented after reviewing the model and formulas.
 
 ## Technical Approach
 
@@ -152,7 +167,7 @@ The project follows a business-focused reporting workflow:
 4. **Add interactions** — use slicers, drillthrough, and tooltip behavior where configured.
 5. **Review the results** — check values, filter behavior, labels, and visual clarity before drawing conclusions.
 
-This describes the reporting workflow at a high level. It does not claim specific Power Query transformations or data-model relationships that have not yet been verified.
+This is a high-level summary of the reporting workflow. Specific Power Query transformations, data-cleaning steps, relationships, and DAX formulas should only be listed when confirmed in the PBIX file.
 
 ## Project Files
 
