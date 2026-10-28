@@ -15,7 +15,9 @@ This page gives an overview of revenue, profit, orders, return rate, monthly tre
 
 This page uses a map to explore where orders come from, with options to view order distribution by continent.
 
+
 <p align="center"><img src="screenshots/02-geographic-analysis.png" alt="Geographic Analysis dashboard" width="900"></p>
+
 
 ### 3. Product Detail
 
@@ -23,11 +25,13 @@ This page focuses on the Mountain Tire Tube product. It shows revenue, orders, r
 
 <p align="center"><img src="screenshots/03-product-detail.png" alt="Product Detail dashboard" width="900"></p>
 
+
 ### 4. Customer Analysis
 
 This page explores customer orders and revenue, including customer groups, occupations, and monthly trends.
 
 <p align="center"><img src="screenshots/04-customer-analysis.png" alt="Customer Analysis dashboard" width="900"></p>
+
 
 ## Project Goals
 
