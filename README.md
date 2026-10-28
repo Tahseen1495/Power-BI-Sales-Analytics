@@ -76,6 +76,8 @@ The Executive Summary preview displays these headline values in the shown report
 | Total Orders | 22,534 |
 | Return Rate | 2.14% |
 
+These values come from the portfolio screenshot and may change when report filters are applied. Check the measure definitions and current filter context in Power BI before using the figures for business decisions.
+
 ## Data Architecture & Modeling
 
 To ensure optimal performance and accurate filter context propagation, the report follows a clean **Star Schema** dimensional model:
@@ -119,7 +121,6 @@ Total Orders = DISTINCTCOUNT('Sales_Data'[OrderNumber])
 Return Rate = DIVIDE([Total Returns], [Total Orders], 0)
 
 
-These values come from the portfolio screenshot and may change when report filters are applied. Check the measure definitions and current filter context in Power BI before using the figures for business decisions.
 
 ## Business Questions
 
